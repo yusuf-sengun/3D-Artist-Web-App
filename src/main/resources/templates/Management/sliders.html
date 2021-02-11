@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html  lang="en"th:lang="${#locale.language}" xmlns:th="http://www.thymeleaf.org" xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <title>Management</title>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
+    <link href="~/lib/bootstrap/dist/css/bootstrap.css" rel="stylesheet" />
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
+</head>
+<body>
+<div class="w3-sidebar w3-light-grey w3-bar-block" style="width:20%">
+    <h3 class="w3-bar-item">Menu</h3>
+    <a th:href="@{/Management/Sliders}" class="w3-bar-item w3-button">Sliders</a>
+    <a th:href="@{/Management/Projects}" class="w3-bar-item w3-button">Projects</a>
+    <a th:href="@{/Management/Messages}" class="w3-bar-item w2-button">Messages</a>
+
+</div>
+<div style="margin-left:20%">
+    <div class="w3-container w3-teal">
+        <h1>Welcome </h1>
+    </div>
+    <div class="container">
+        <table border="1" style="width: 80%!important;" th:object="${list}" class="table table-bordered">
+            <h1>Sliders</h1>
+            <tr>
+                <th>Slider</th>
+                <th>Slider Name</th>
+                <th>Delete</th>
+            </tr>
+            <tr  th:each="slider,iter :${list}">
+                <td th:text="${slider.image_id}"></td>
+                <td th:text="${slider.image_name}"></td>
+                <td><a th:href="@{/Management/DeleteSlider/(id=${slider.image_id})}" type="button" class="btn btn-danger" > Delete</a></td>
+            </tr>
+        </table>
+        <a class="btn btn-success" onclick="myFunction()"> Add New Slider</a>
+        <a th:href="@{/Management/SaveSliders}" class="btn btn-danger"> Save Changes</a>
+        <div id="panel" style="display: none; margin-top: 10px">
+            <form action="#" th:action="@{/Management/PostSlider}" method="post" enctype="multipart/form-data">
+                <table class="table table-bordered" >
+                    <tr>
+                        <td>Image Name:</td>
+                        <td><input type="text" placeholder="Name" name="image_name"  required ></td></td>
+                    </tr>
+                    <tr>
+                        <td>Image:</td>
+                        <td><input type="file" name="image" required></td></td>
+                    </tr>
+                </table>
+                <button type="submit" class="btn btn-success"> Add</button>
+                <a class="btn btn-info" onclick="myFunction2()"> Back</a>
+            </form>
+        </div>
+    </div>
+</div>
+<script>
+    function myFunction() {
+        document.getElementById("panel").style.display = "block";
+    }
+    function myFunction2() {
+        document.getElementById("panel").style.display="none";
+    }
+</script>
+
+</body>
+</html>
+

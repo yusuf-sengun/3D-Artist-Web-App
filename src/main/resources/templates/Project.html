@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html  lang="en"th:lang="${#locale.language}" xmlns:th="http://www.thymeleaf.org" xmlns="http://www.w3.org/1999/xhtml">
+<head>
+        <title>Enes Yurdakul</title>
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <meta content="text/html; charset=iso-8859-2" http-equiv="Content-Type">
+        <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
+        <link rel="stylesheet" href="static/image/menu.css">
+        <link rel="stylesheet" href="4/w3.css">
+        <link rel="stylesheet" href="../static/main.css">
+        <style>
+            .prj{
+                position: relative;
+                width:98%;
+                margin-top:150px;
+                margin-left: 20px;
+            }
+            .prjdescribtion{
+                position: relative;
+                height: 100px;
+                width: 98%;
+                margin-left: 20px;
+            }
+            label{
+                color:white;
+                margin-left:30px;
+            }
+
+
+
+        </style>
+</head>
+<body bgcolor="black">
+<div class="w3-content w3-section" style="max-width:100%;height: 90%" th:object="${item}">
+    <div class="Home" style="position:relative!important; float: right;margin-top:40px;"><a href="">Enes Yurdakul.</a></div>
+
+    <div id="myNav" class="overlay" >
+        <a href="javascript:void(1)" class="closebtn" onclick="closeNav()">&times;</a>
+        <div class="overlay-content">
+            <a th:href="@{/}">Home</a>
+            <a th:href="@{/Projects}">Projects</a>
+            <a th:href="@{/About}">About</a>
+            <a th:href="@{/Contact}">Contact</a>
+        </div>
+    </div>
+
+    <div class="menu"  style="position:relative!important;float: left!important;"><span style="font-size:30px;cursor:pointer;" onclick="openNav()">&#9776;</span></div>
+    <h1 th:text="${item.project_name +' Project'}" style="margin-top: 100px;color: white;position:absolute;margin-left:20px;"> </h1></br>
+    <div class="prj"><img  th:src="@{${'/static/projects/'+item.project_name+'.jpg'}}"> </div>
+    <div class="prjdescribtion">
+        <table style="margin-top:20px;">
+            <tr>
+                <th><label style="margin-left:-50px!important; font-size: larger">Project Name </label></th>
+                <th><label style="font-size: larger; margin-left:15px!important;">Project Client</label></th>
+                <th><label style="font-size: larger">Project Technique</label></br></th>
+            </tr>
+            <tr style="color:red;">
+                <td><label style="color:red;" th:text="${item.project_name}"></label></td>
+                <td> </label><label style="color:red;" th:text="${item.project_client}"></label></td>
+                <td></label><label style="color:red;" th:text="${item.project_technique}"></label></td>
+            </tr>
+            <tr>
+                <th><label style="font-size: larger">Project Photographer</label></th>
+                <th><label style="font-size: larger">Project Agency</label></th>
+            </tr>
+            <tr >
+                <td><label style="color:red;" th:text="${item.project_photographer}"> selam</label></td>
+                <td><label  style="color:red;" th:text="${item.project_agency}"></label></td>
+            </tr>
+        </table>
+
+
+
+    </div>
+
+
+</div>
+<script>
+    function openNav() {
+        document.getElementById("myNav").style.width = "100%";
+    }
+
+    function closeNav() {
+        document.getElementById("myNav").style.width = "0%";
+    }
+</script>
+</body>
+</html>

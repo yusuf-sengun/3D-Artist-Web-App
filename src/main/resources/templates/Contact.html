@@ -1,0 +1,124 @@
+<!DOCTYPE html>
+<html  lang="en"th:lang="${#locale.language}" xmlns:th="http://www.thymeleaf.org" xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <head>
+        <title>Enes Yurdakul</title>
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <meta content="text/html; charset=iso-8859-2" http-equiv="Content-Type">
+        <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
+        <link rel="stylesheet" href="static/image/menu.css">
+        <link rel="stylesheet" href="4/w3.css">
+        <link rel="stylesheet" href="../static/main.css">
+        <style>
+            .about{
+                width: 50%;
+                left: 0%;
+                right: 0%;
+                margin-top: 400px;
+                margin-left: auto;
+                margin-right: auto;
+                position: absolute;
+            }
+            .about p {
+                color: white;
+                font-family: Calibri;
+                font-size: 12px;
+            }
+            .contact-info{
+
+                column-count: 3;
+                column-gap: 40px;
+                column-rule: 2px solid red;
+            }
+            .table-input{
+                background-color:black;
+                border: none;
+                color:white;
+                border-color: red;
+                padding: 5px;
+                outline: none;
+            }
+        </style>
+    </head>
+
+<body bgcolor="black">
+<div style="padding: 1px; height: 80%">
+
+    <div id="myNav" class="overlay">
+        <a href="javascript:void(1)" class="closebtn" onclick="closeNav()">&times;</a>
+        <div class="overlay-content">
+            <a th:href="@{/}">Home</a>
+            <a th:href="@{/Projects}">Projects</a>
+            <a th:href="@{/About}">About</a>
+            <a href="" style="color:red">Contact</a>
+        </div>
+    </div>
+    <div class="Home"><a th:href="@{/}">Enes Yurdakul.</a></div>
+    <div class="menu"><span style="font-size:30px;cursor:pointer;" onclick="openNav()">&#9776;</span></div>
+    <div class="main">
+        <div class="content-bottom1 w3-container w3-center w3-animate-left main" style="left: 0%;right: 0%;margin-top: 0px!important;"><a>04</a></div>
+        <div style="margin-top: 150px!important;"><p>Contact <label>Enes Yurdakul.</label></p></div>
+    </div>
+    <div class="about main" style="margin-top: 350px!important;">
+        <div class="contact-info"><p>I'm a paragraph. Click here to add your own text and edit me.</p>
+            <p>It?s easy. Just click ?Edit Text? or double click me to add your own content and make changes to the font. </p></div>
+        <div style="background-color: #f44336;position: absolute; margin-top: 20px!important;" >
+            <form id="my-form" action="#" th:action="@{/Contact/Sendemail}" method="post">
+            <table style="background-color: black;width: 700px;">
+
+                <tr>
+                    <td><input type="text" placeholder="Name" name="name" class="table-input" required></td>
+                    <td><input type="email" placeholder="E-mail" name="email" class="table-input"></td>
+                </tr>
+                <tr>
+                    <td colspan="2"><textarea placeholder="Type your message here.."  name="message" class="table-input" style="width: 700px;height: 50px;resize: none;color: white"></textarea> </td>
+                </tr>
+                <tr>
+                    <td colspan="2"style="text-align: center; vertical-align: middle;color: white"><button type="submit" style="background-color: black;color: white;border-color: black;">Submit!</button> </td>
+                </tr>
+            </table>
+            </form>
+        </div>
+    </div>
+
+</div>
+<div style="height: 5%;width: 100%;text-align:center; position: absolute;bottom:0px;">
+    <label style="font-size: 8px;color: gray;text-align: center; margin-top: 500px">@2020 by Enes Yurdakul Proudly created with Yusuf Şengün</label></div>
+</div>
+<script>
+    function openNav() {
+        document.getElementById("myNav").style.width = "100%";
+    }
+
+    function closeNav() {
+        document.getElementById("myNav").style.width = "0%";
+    }
+    $(function () {
+        var $registerform = $("#my-form");
+        if ($registerform.length) {
+            $registerform.validate({
+                rules: {
+                    name: {
+                        required: true,
+                        min:5,
+                    },
+                    email: {
+                        required: true
+                    },
+
+                },
+                messages: {
+                    uname: {
+                        required: 'Enter a  name',
+                    },
+                    psw: {
+                        required: 'Enter e-mail',
+                    },
+                }
+            })
+        }
+    })
+</script>
+
+</body>
+</html>

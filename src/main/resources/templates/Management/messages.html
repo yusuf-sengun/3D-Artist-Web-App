@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html  lang="en"th:lang="${#locale.language}" xmlns:th="http://www.thymeleaf.org" xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <title>Management</title>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
+    <link href="~/lib/bootstrap/dist/css/bootstrap.css" rel="stylesheet" />
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
+</head>
+<body>
+<div class="w3-sidebar w3-light-grey w3-bar-block" style="width:20%">
+    <h3 class="w3-bar-item">Menu</h3>
+    <a th:href="@{/Management/Sliders}" class="w3-bar-item w3-button">Sliders</a>
+    <a th:href="@{/Management/Projects}" class="w3-bar-item w3-button">Projects</a>
+    <a th:href="@{/Management/Messages}" class="w3-bar-item w2-button">Messages</a>
+
+</div>
+<div style="margin-left:20%">
+    <div class="w3-container w3-teal">
+        <h1>Welcome </h1>
+    </div>
+    <div class="container">
+        <table border="1" style="width: 80%!important;" th:object="${list}" class="table table-bordered">
+            <h1>Contact</h1>
+            <tr>
+                <th>Message Id</th>
+                <th>Name</th>
+                <th>E-mail</th>
+                <th>Message</th>
+            </tr>
+            <tr  th:each="message , iter :${list}">
+                <td th:text="${message.id}"></td>
+                <td th:text="${message.name}"></td>
+                <td th:text="${message.email}"></td>
+                <td th:text="${message.message}"></td>
+                <td><a th:href="@{/Management/DeleteMessage/(id=${message.id})}" type="button" class="btn btn-danger" > Delete</a></td>
+            </tr>
+        </table>
+    </div>
+
+
+</div>
+</body>
+</html>
+
